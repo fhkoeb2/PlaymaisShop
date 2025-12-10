@@ -3,15 +3,19 @@ export const dynamic = 'force-dynamic';
 import { getDb } from '@/lib/db';
 import { products } from '@/lib/db/schema';
 import ProductCard from '@/components/ProductCard';
+import CategoryTree from '@/components/CategoryTree';
 import { Filter } from 'lucide-react';
-import { eq, and, gte, lte, ilike, or } from 'drizzle-orm';
+import { and, gte, lte, ilike, or, inArray } from 'drizzle-orm';
 
-async function getProducts(category?: string, minPrice?: number, maxPrice?: number, search?: string) {
+async function getProducts(category?: string | string[], minPrice?: number, maxPrice?: number, search?: string) {
   const db = getDb();
   const conditions = [];
 
   if (category) {
-    conditions.push(eq(products.category, category));
+    const categories = Array.isArray(category) ? category : [category];
+    if (categories.length > 0) {
+      conditions.push(inArray(products.category, categories));
+    }
   }
 
   if (minPrice !== undefined) {
@@ -41,7 +45,7 @@ async function getProducts(category?: string, minPrice?: number, maxPrice?: numb
 async function ProductsList({
   searchParams,
 }: {
-  searchParams: { category?: string; minPrice?: string; maxPrice?: string; search?: string };
+  searchParams: { category?: string | string[]; minPrice?: string; maxPrice?: string; search?: string };
 }) {
   const category = searchParams.category;
   const minPrice = searchParams.minPrice ? parseFloat(searchParams.minPrice) : undefined;
@@ -68,7 +72,7 @@ async function ProductsList({
 }
 
 export default async function ProductsPage(props: {
-  searchParams: Promise<{ category?: string; minPrice?: string; maxPrice?: string; search?: string }>;
+  searchParams: Promise<{ category?: string | string[]; minPrice?: string; maxPrice?: string; search?: string }>;
 }) {
   const searchParams = await props.searchParams;
   return (
@@ -81,31 +85,7 @@ export default async function ProductsPage(props: {
             Filters
           </h2>
           <form className="space-y-6">
-            <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-                Category
-              </label>
-              <select
-                id="category"
-                name="category"
-                defaultValue={searchParams.category}
-                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-              >
-                <option value="">All Categories</option>
-                <option value="Castle">Castle</option>
-                <option value="Space">Space</option>
-                <option value="Dinosaur">Dinosaur</option>
-                <option value="City">City</option>
-                <option value="Pirate">Pirate</option>
-                <option value="Ocean">Ocean</option>
-                <option value="Animals">Animals</option>
-                <option value="Fantasy">Fantasy</option>
-                <option value="Transportation">Transportation</option>
-                <option value="Nature">Nature</option>
-                <option value="Historical">Historical</option>
-                <option value="Sports">Sports</option>
-              </select>
-            </div>
+            <CategoryTree />
 
             <div>
               <label htmlFor="minPrice" className="block text-sm font-medium text-gray-700">
@@ -152,7 +132,7 @@ export default async function ProductsPage(props: {
             <ProductsList searchParams={searchParams} />
           </Suspense>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 } 
