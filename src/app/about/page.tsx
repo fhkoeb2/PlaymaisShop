@@ -8,7 +8,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Story</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From a young builder's dream to a community of creators
+            From a young builder&apos;s dream to a community of creators
           </p>
         </div>
 
@@ -27,16 +27,16 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Meet Philip</h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                At just 11 years old, Philip discovered his passion for construction and creativity through Playmais. 
+                At just 11 years old, Philip discovered his passion for construction and creativity through Playmais.
                 What started as a hobby quickly turned into something much bigger.
               </p>
               <p>
-                "I love how Playmais lets me build anything I can imagine," says Philip. 
-                "From castles to spaceships, every piece is a new adventure waiting to happen."
+                &quot;I love how Playmais lets me build anything I can imagine,&quot; says Philip.
+                &quot;From castles to spaceships, every piece is a new adventure waiting to happen.&quot;
               </p>
               <p>
-                Inspired by his own journey, Philip wanted to share the joy of building with others. 
-                That's how our store was born - a place where young builders can find everything they need 
+                Inspired by his own journey, Philip wanted to share the joy of building with others.
+                That&apos;s how our store was born - a place where young builders can find everything they need
                 to bring their imagination to life.
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function AboutPage() {
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Join Our Building Community</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Whether you're a young builder like Philip or a parent looking for creative toys, 
+            Whether you&apos;re a young builder like Philip or a parent looking for creative toys,
             we welcome you to explore the endless possibilities of Playmais.
           </p>
           <a

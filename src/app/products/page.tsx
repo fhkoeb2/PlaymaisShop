@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+export const dynamic = 'force-dynamic';
 import { getDb } from '@/lib/db';
 import { products } from '@/lib/db/schema';
 import ProductCard from '@/components/ProductCard';
@@ -36,25 +37,6 @@ async function getProducts(category?: string, minPrice?: number, maxPrice?: numb
   return db.select().from(products).where(whereClause);
 }
 
-function ProductsSkeleton() {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[1, 2, 3, 4, 5, 6].map((i) => (
-        <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-          <div className="h-48 bg-gray-200" />
-          <div className="p-4">
-            <div className="h-6 bg-gray-200 rounded w-3/4 mb-2" />
-            <div className="h-4 bg-gray-200 rounded w-full mb-4" />
-            <div className="flex justify-between items-center">
-              <div className="h-6 bg-gray-200 rounded w-1/4" />
-              <div className="h-6 bg-gray-200 rounded w-1/4" />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 async function ProductsList({
   searchParams,
@@ -85,11 +67,10 @@ async function ProductsList({
   );
 }
 
-export default function ProductsPage({
-  searchParams,
-}: {
-  searchParams: { category?: string; minPrice?: string; maxPrice?: string; search?: string };
+export default async function ProductsPage(props: {
+  searchParams: Promise<{ category?: string; minPrice?: string; maxPrice?: string; search?: string }>;
 }) {
+  const searchParams = await props.searchParams;
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-8">

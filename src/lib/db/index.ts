@@ -4,7 +4,7 @@ import * as schema from './schema';
 
 // Create a PostgreSQL connection pool
 const pool = new Pool({
-  connectionString: 'postgresql://postgres:postgres@localhost:5432/playmais',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/playmais',
 });
 
 // Create a Drizzle instance

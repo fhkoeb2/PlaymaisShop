@@ -1,7 +1,8 @@
 import Link from 'next/link';
+export const dynamic = 'force-dynamic';
 import Image from 'next/image';
 import { getDb } from '@/lib/db';
-import { products, type Product } from '@/lib/db/schema';
+import { products } from '@/lib/db/schema';
 import ProductCard from '@/components/ProductCard';
 import { Suspense } from 'react';
 import { desc } from 'drizzle-orm';
@@ -34,7 +35,7 @@ function FeaturedProductsSkeleton() {
 
 async function FeaturedProducts() {
   const featuredProducts = await getFeaturedProducts();
-  
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {featuredProducts.map((product) => (
@@ -63,7 +64,7 @@ export default function Home() {
             />
           </div>
         </div>
-        
+
         <div className="relative min-h-[400px] md:min-h-[500px] flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <div className="max-w-3xl">
@@ -74,8 +75,8 @@ export default function Home() {
                 Discover the joy of construction with our premium Playmais products.
                 Create, build, and bring your ideas to life with our versatile building materials.
               </p>
-              <Link 
-                href="/products" 
+              <Link
+                href="/products"
                 className="inline-block bg-white text-indigo-700 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
               >
                 Start Building
@@ -84,7 +85,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* Featured Products */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,14 +95,14 @@ export default function Home() {
               Explore our most popular Playmais construction sets
             </p>
           </div>
-          
+
           <Suspense fallback={<FeaturedProductsSkeleton />}>
             <FeaturedProducts />
           </Suspense>
-          
+
           <div className="text-center mt-12">
-            <Link 
-              href="/products" 
+            <Link
+              href="/products"
               className="inline-block bg-indigo-600 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-700 transition-colors"
             >
               View All Products
@@ -113,7 +114,7 @@ export default function Home() {
       {/* Company Values Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Eco-Friendly */}
             <div className="text-center p-6 rounded-lg bg-green-50">

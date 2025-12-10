@@ -8,7 +8,7 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions about Playmais? We'd love to hear from you!
+            Have questions about Playmais? We&apos;d love to hear from you!
           </p>
         </div>
 

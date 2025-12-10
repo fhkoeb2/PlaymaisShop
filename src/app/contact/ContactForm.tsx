@@ -23,7 +23,7 @@ export default function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -101,7 +101,7 @@ export default function ContactForm() {
 
         {submitStatus === 'success' && (
           <div className="p-4 bg-green-50 text-green-700 rounded-md">
-            Thank you for your message! We'll get back to you soon.
+            Thank you for your message! We&apos;ll get back to you soon.
           </div>
         )}
 
@@ -115,8 +115,8 @@ export default function ContactForm() {
           type="submit"
           disabled={isSubmitting}
           className={`w-full py-3 px-6 rounded-md font-medium text-white 
-            ${isSubmitting 
-              ? 'bg-indigo-400 cursor-not-allowed' 
+            ${isSubmitting
+              ? 'bg-indigo-400 cursor-not-allowed'
               : 'bg-indigo-600 hover:bg-indigo-700'
             }`}
         >

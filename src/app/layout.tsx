@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from 'next/link';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -38,10 +39,10 @@ export default function RootLayout({
               <div>
                 <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul className="space-y-2">
-                  <li><a href="/" className="text-gray-300 hover:text-white">Home</a></li>
-                  <li><a href="/products" className="text-gray-300 hover:text-white">Products</a></li>
-                  <li><a href="/about" className="text-gray-300 hover:text-white">About</a></li>
-                  <li><a href="/contact" className="text-gray-300 hover:text-white">Contact</a></li>
+                  <li><Link href="/" className="text-gray-300 hover:text-white">Home</Link></li>
+                  <li><Link href="/products" className="text-gray-300 hover:text-white">Products</Link></li>
+                  <li><Link href="/about" className="text-gray-300 hover:text-white">About</Link></li>
+                  <li><Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link></li>
                 </ul>
               </div>
               <div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useCart } from '@/lib/cart';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Check, CreditCard, Package, Truck } from 'lucide-react';
+import { Check, CreditCard, Truck } from 'lucide-react';
 
 type CheckoutStep = 'shipping' | 'payment' | 'review';
 
@@ -87,20 +87,18 @@ export default function CheckoutPage() {
           return (
             <div key={step.id} className="flex items-center">
               <div
-                className={`flex items-center justify-center w-10 h-10 rounded-full ${
-                  isActive
+                className={`flex items-center justify-center w-10 h-10 rounded-full ${isActive
                     ? 'bg-indigo-600 text-white'
                     : isCompleted
-                    ? 'bg-green-500 text-white'
-                    : 'bg-gray-200 text-gray-600'
-                }`}
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gray-200 text-gray-600'
+                  }`}
               >
                 <Icon size={20} />
               </div>
               <span
-                className={`ml-2 text-sm font-medium ${
-                  isActive ? 'text-indigo-600' : 'text-gray-500'
-                }`}
+                className={`ml-2 text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-500'
+                  }`}
               >
                 {step.label}
               </span>

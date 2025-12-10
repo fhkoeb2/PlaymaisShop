@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { getDb } from './db';
 import { products } from './db/schema';
-import { eq, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
 const productData = [
   {
@@ -82,6 +82,7 @@ async function main() {
 
   // First, create all products without relatedProducts
   for (const product of productData) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { relatedProducts, ...productWithoutRelated } = product;
     await db.insert(products).values({
       ...productWithoutRelated,

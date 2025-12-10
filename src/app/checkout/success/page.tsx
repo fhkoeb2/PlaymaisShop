@@ -15,7 +15,7 @@ export default function CheckoutSuccessPage() {
             Thank You for Your Order!
           </h1>
           <p className="text-gray-600 mb-8">
-            Your order has been successfully placed. We'll send you an email with your order
+            Your order has been successfully placed. We&apos;ll send you an email with your order
             details and tracking information once your items ship.
           </p>
           <div className="space-y-4">
