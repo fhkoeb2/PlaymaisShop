@@ -16,7 +16,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
           <div className="relative aspect-square rounded-lg overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800"
+              src="/images/meet-philip.png"
               alt="Philip building with Playmais"
               fill
               className="object-cover"
